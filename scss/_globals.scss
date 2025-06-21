@@ -1,0 +1,53 @@
+@use 'variables';
+@use 'mixins';
+
+// Custom styles
+html {
+  scroll-behavior: smooth;
+}
+body {
+    font-family: variables.$font-family-sans-serif !important;
+}
+
+.font-12 {
+    font-size: 12px;
+}
+.theme-text-primary {
+    color: variables.$primary !important;
+}
+
+.bg-dark-blue {
+    background-color: #002c5f; // dark blue background
+}
+
+.custom-border-radius {
+    border-radius: 0 0 12px 0 !important;
+}
+
+//section paddings
+.section-container {
+    padding-top: 80px;
+    padding-bottom: 80px;
+
+    @include mixins.respond(md) {
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
+}
+//responsive handling
+@include mixins.respond(md) {
+
+    .container,
+    .container-sm {
+        max-width: 100%;
+        padding-left: 15px !important;
+        padding-right: 15px !important;
+    }
+}
+//link hover styles
+.hover-link{
+&:hover{
+    color: variables.$primary!important;
+    text-decoration: underline!important;
+}
+}
