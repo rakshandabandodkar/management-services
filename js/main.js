@@ -79,3 +79,29 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 });
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contact-form");
+
+    form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+
+        fetch("submit-form.php", {
+            method: "POST",
+            body: formData
+        })
+        .then(res => res.text())
+        .then(response => {
+            if (response.trim() === "success") {
+                alert("Thank you! Your message has been sent.");
+                form.reset();
+            } else {
+                alert("Something went wrong: " + response);
+            }
+        })
+        .catch(error => {
+            alert("There was an error submitting the form.");
+            console.error(error);
+        });
+    });
+});
